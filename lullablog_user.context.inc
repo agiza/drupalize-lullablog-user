@@ -41,5 +41,41 @@ function lullablog_user_context_default_contexts() {
   $context->condition_mode = 0;
   $export['lullablog_author_context'] = $context;
 
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'lullablog_context';
+  $context->description = '';
+  $context->tag = '';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'lullablog' => 'lullablog',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'views' => array(
+      'values' => array(
+        'lullablog' => 'lullablog',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-lullablog_authors-block' => array(
+          'module' => 'views',
+          'delta' => 'lullablog_authors-block',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+  $export['lullablog_context'] = $context;
+
   return $export;
 }
